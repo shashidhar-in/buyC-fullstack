@@ -1,0 +1,22 @@
+
+Brand	Model	Year	List Price ($)	Available Colors	Mileage (MPG)	Power (BHP)	Max Speed (mph)
+Toyota	Camry	2022	25,000	Silver, White, Black	28	203	133
+Honda	Civic	2023	22,000	Red, Blue, Gray, White	36	158	129
+Ford	Mustang	2022	32,500	Black, Blue, Red, Yellow	25	310	155
+Chevrolet	Silverado 1500	2023	40,000	White, Black, Blue, Gray, Red	20	355	143
+BMW	3 Series	2022	40,800	White, Black, Silver, Blue	32	255	155
+Mercedes	E-Class	2023	55,000	Black, Silver, Gray, White	30	255	130
+Audi	A4	2022	39,000	White, Black, Silver, Gray	34	201	130
+Nissan	Rogue	2023	28,000	Blue, Gray, Red, White, Black	29	181	135
+Hyundai	Sonata	2022	23,500	Black, Silver, Gray, Blue	33	191	132
+Kia	Sportage	2023	26,500	White, Black, Gray, Red, Silver	30	181	127
+Volkswagen	Golf	2022	24,500	Blue, Black, Red, White, Gray	35	147	124
+Subaru	Outback	2023	28,800	Green, Black, Silver, Gray	26	182	123
+Jaguar	F-PACE	2022	54,800	Red, Blue, Black, Gray, White	23	246	155
+Lexus	RX	2023	47,500	White, Black, Silver, Blue	28	295	130
+GMC	Sierra 1500	2022	42,000	Black, White, Gray, Red	21	355	140
+Volvo	XC60	2023	46,500	Blue, Black, White, Gray	29	250	135
+Land Rover	Range Rover Evoque	2022	42,900	Red, Blue, White, Black	26	246	143
+Mazda	CX-5	2023	29,800	Red, Black, Blue, Gray, Silver	31	187	133
+Porsche	911	2022	102,400	Black, White, Blue, Silver, Red	22	443	182
+Tesla	Model 3	2023	39,900	Red, Black, Blue, White	60	283	140
