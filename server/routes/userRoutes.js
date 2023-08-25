@@ -17,7 +17,6 @@ module.exports = (pool) => {
   // Define the route for user signup
   router.post('/signup', (req, res) => {
     const { username, email, password, mobileNumber, location } = req.body;
-
     // Check if user already exists
     const checkUserQuery = 'SELECT * FROM users WHERE email = ?';
     pool.query(checkUserQuery, [email], (error, results) => {
@@ -82,8 +81,10 @@ module.exports = (pool) => {
             const token = jwt.sign({ userId, username, email,mobileNumber }, process.env.JWT_SECRET);
 
             // Store the token in a cookie
-            res.cookie('token', token, { httpOnly: true });
+          // Store the token in a cookie
+            res.cookie('token', token);
 
+            
             res.json({ message: 'User created successfully' });
           });
         });
@@ -107,7 +108,7 @@ module.exports = (pool) => {
 router.post('/login', (req, res) => {
     // Retrieve user credentials from the request body
     const { email, password } = req.body;
-  
+
     // Verify user credentials (e.g., query the database)
     // If credentials are valid, generate a JWT token
     const loginUserQuery = 'SELECT * FROM users WHERE email = ?';
@@ -143,8 +144,10 @@ router.post('/login', (req, res) => {
         const token = jwt.sign({ userId, username, email, mobileNumber }, process.env.JWT_SECRET);
   
         // Store the token in a cookie
-        res.cookie('token', token, { httpOnly: true });
-  
+        // Store the token in a cookie
+          res.cookie('token', token);
+
+        
         // Send a response or redirect the user
         res.json({ message: 'User logged in successfully' });
       });

@@ -7,16 +7,19 @@ const specsRoute=require('./routes/oemSpecs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const carRoutes = require('./routes/carRoutes');
+const session = require('express-session');
+
 require('dotenv').config();
 const app = express();
 app.use(cookieParser());
-app.use(cors({
-  origin:["http://localhost:3000"],
-  credentials:true,
-}))
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
+// Update the origin in the cors configuration
+app.use(cors({
+  origin:"http://localhost:5000",
+  credentials:true
+}));
 
 
 // Create a MySQL connection pool
@@ -41,6 +44,9 @@ app.listen(process.env.PORT, () => {
 });
 
 });
+// // Handle preflight requests for the /api/users/login route
+// app.options('/api/users/signup', cors({ origin: 'https://buyc-ssd.netlify.app', credentials: true }));
+// app.options('/api/users/login', cors({ origin: 'https://buyc-ssd.netlify.app', credentials: true }));
 
 
 // Create the userRoutes with the pool and use it

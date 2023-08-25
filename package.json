@@ -1,0 +1,24 @@
+{
+  "name": "attryb",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000A\u0000t\u0000t\u0000r\u0000y\u0000B\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "cd server && npm install",
+    "start-server": "cd server && node server.js",
+    "install-client": "cd frontend && npm install",
+    "build-client": "cd frontend && npm run build",
+    "start-client": "cd frontend && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shashidhar-in/AttryB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shashidhar-in/AttryB/issues"
+  },
+  "homepage": "https://github.com/shashidhar-in/AttryB#readme"
+}
