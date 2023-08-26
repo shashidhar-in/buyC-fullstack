@@ -22,7 +22,6 @@ const upload = multer({ storage });
 module.exports = (pool) => {
   // Route to add a car
   router.post('/add', upload.single('image'), authenticate, (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app/');
     const { title, description, brand, model, year } = req.body;
     const image = req.file.filename;
 
@@ -49,8 +48,6 @@ module.exports = (pool) => {
 
   // Route to delete a car
   router.delete('/delete/:carId', authenticate, (req, res) => {
-        res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app/');
-
     const { carId } = req.params;
 
     // Execute the SQL query to delete the car from the used_cars table
@@ -73,8 +70,6 @@ module.exports = (pool) => {
   });
   // Route to delete multiple cars
   router.delete('/delete-multiple', authenticate, (req, res) => {
-        res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app/');
-
     const { carIds } = req.body;
 
     // Convert the carIds to an array if it's a single value
@@ -96,8 +91,6 @@ module.exports = (pool) => {
 
   // Route to edit a car
   router.put('/edit/:carId', upload.single('image'), authenticate, (req, res) => {
-        res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app/');
-
     const { carId } = req.params;
     const { title, description, brand, model, year } = req.body;
     const image = req.file ? req.file.filename : null;
@@ -111,7 +104,6 @@ module.exports = (pool) => {
     const values = [image, title, description, brand, model, year, carId];
 
     pool.query(updateCarQuery, values, (err, result) => {
-
       if (err) {
         console.error('Error updating car details:', err);
         res.status(500).json({ error: 'Internal Server Error' });
@@ -151,8 +143,6 @@ module.exports = (pool) => {
 
 // Route to get a specific car by ID
 router.get('/:carId', (req, res) => {
-      res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app/');
-
   const { carId } = req.params;
 
   getCarById(carId, (err, car) => {
@@ -178,8 +168,6 @@ router.get('/:carId', (req, res) => {
   // Route to get all cars
 // Route to get all cars
 router.get('/', (req, res) => {
-      res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app/');
-
   // Execute the SQL query to retrieve all cars from the used_cars table
   const getAllCarsQuery = 'SELECT id,userId, title, description, brand, model, year, CONCAT(?, image) AS imageUrl FROM used_cars';
   const baseUrl = '/uploads/';
