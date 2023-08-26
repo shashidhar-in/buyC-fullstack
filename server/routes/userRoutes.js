@@ -82,7 +82,10 @@ module.exports = (pool) => {
 
             // Store the token in a cookie
           // Store the token in a cookie
-            res.cookie('token', token);
+            res.cookie('token', token, {
+  sameSite: 'none',
+  secure: true, // Only for HTTPS
+});
 
             
             res.json({ message: 'User created successfully' });
