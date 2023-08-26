@@ -17,8 +17,8 @@ app.use('/uploads', express.static('uploads'));
 
 // Update the origin in the cors configuration
 app.use(cors({
-  origin:"*",
-  credentials:"true"
+  origin: 'https://buyc-ssd.netlify.app',
+  credentials: true,
 }));
 
 
