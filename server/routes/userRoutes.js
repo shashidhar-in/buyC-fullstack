@@ -85,7 +85,7 @@ module.exports = (pool) => {
           // Store the token in a cookie
             res.cookie('token', token, {
   sameSite: 'none',
-  secure: false, // Only for HTTPS
+  secure: true, // Only for HTTPS
 });
 
             
@@ -151,7 +151,7 @@ router.post('/login', (req, res) => {
         // Store the token in a cookie
           res.cookie('token', token, {
   sameSite: 'none',
-  secure: false, // Only for HTTPS
+  secure: true, // Only for HTTPS
 });
 
         
