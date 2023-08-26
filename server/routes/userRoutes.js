@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
+const { Cookie } = require('express-session');
 
 const router = express.Router();
 
@@ -84,7 +85,7 @@ module.exports = (pool) => {
           // Store the token in a cookie
             res.cookie('token', token, {
   sameSite: 'none',
-  secure: true, // Only for HTTPS
+  secure: false, // Only for HTTPS
 });
 
             
@@ -150,7 +151,7 @@ router.post('/login', (req, res) => {
         // Store the token in a cookie
           res.cookie('token', token, {
   sameSite: 'none',
-  secure: true, // Only for HTTPS
+  secure: false, // Only for HTTPS
 });
 
         
@@ -165,6 +166,7 @@ router.post('/login', (req, res) => {
   router.get('/current', authenticate, (req, res) => {
     // Access the authenticated user from req.user
     // Exclude the password from the response
+
     const { username, email, mobileNumber, location } = req.user;
 
     // Handle getting current user logic
@@ -211,7 +213,6 @@ router.get('/:userId', (req, res) => {
   function authenticate(req, res, next) {
     // Retrieve the JWT token from the cookie
     const token = req.cookies.token;
-
     // Verify and decode the token
     jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
       if (err) {
