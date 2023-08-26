@@ -16,6 +16,8 @@ module.exports = (pool) => {
 
   // Define the route for user signup
   router.post('/signup', (req, res) => {
+        res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app/');
+
     const { username, email, password, mobileNumber, location } = req.body;
     // Check if user already exists
     const checkUserQuery = 'SELECT * FROM users WHERE email = ?';
@@ -106,6 +108,8 @@ module.exports = (pool) => {
 
 // User login route
 router.post('/login', (req, res) => {
+      res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app/');
+
     // Retrieve user credentials from the request body
     const { email, password } = req.body;
 
@@ -157,6 +161,8 @@ router.post('/login', (req, res) => {
 
   // Get current user route
   router.get('/current', authenticate, (req, res) => {
+        res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app/');
+
     // Access the authenticated user from req.user
     // Exclude the password from the response
     const { username, email, mobileNumber, location } = req.user;
@@ -166,6 +172,8 @@ router.post('/login', (req, res) => {
   });
   // Route to get user details by user ID
 router.get('/:userId', (req, res) => {
+      res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app/');
+
   const { userId } = req.params;
 
   // Execute the SQL query to retrieve user details by user ID
@@ -194,6 +202,8 @@ router.get('/:userId', (req, res) => {
 
   // User logout route
   router.post('/logout', (req, res) => {
+        res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app/');
+
     // Clear the token cookie
     res.clearCookie('token');
 

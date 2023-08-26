@@ -7,12 +7,16 @@ const router = express.Router();
 module.exports = (pool) => {
   // Route to test the specs route
   router.get('/', (req, res) => {
+        res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app/');
+
     res.send('Specs route working!');
   });
 
 
 // Route to fetch car specs
 router.get('/specs/:brand/:model/:year', (req, res) => {
+      res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app/');
+
   const { brand, model, year } = req.params;
 
   // Query to fetch car specs from the oem_specs table
@@ -41,6 +45,8 @@ router.get('/specs/:brand/:model/:year', (req, res) => {
 });
   // Route to fetch the total number of entries in the oem_specs table
   router.get('/count', (req, res) => {
+        res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app/');
+
     // Query to fetch the count of entries from the oem_specs table
     const countQuery = 'SELECT COUNT(*) AS total FROM mydb.oem_specs';
 
@@ -60,6 +66,8 @@ router.get('/specs/:brand/:model/:year', (req, res) => {
 
     // Route to fetch all items from the oem_specs table
     router.get('/all', (req, res) => {
+          res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app/');
+
       // Query to fetch all items from the oem_specs table
       const selectAllQuery = 'SELECT * FROM mydb.oem_specs';
   
