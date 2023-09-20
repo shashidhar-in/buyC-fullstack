@@ -218,7 +218,7 @@ try {
   // Middleware to authenticate incoming requests
   function authenticate(req, res, next) {
     // Retrieve the JWT token from the cookie
-    const token = req.cookies.token;
+    const token = req.cookies.access-token;
     // Verify and decode the token
     jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
       if (err) {
