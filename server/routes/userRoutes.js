@@ -149,9 +149,10 @@ router.post('/login', (req, res) => {
   
         // Store the token in a cookie
         // Store the token in a cookie
-          res.cookie('token', token, {
-  sameSite: 'none',
-  secure: true, // Only for HTTPS
+          res.cookie('access-token', token, {    
+      expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
 });
 
         
@@ -202,14 +203,14 @@ router.get('/:userId', (req, res) => {
 
 // User logout route
 router.post('/logout', (req, res) => {
-  // Clear the token cookie with the same options
-  res.clearCookie('token', {
-    sameSite: 'none',
-    secure: true, // Only for HTTPS
-  });
+try {
+    res.clearCookie("access-token");
 
-  // Send a response indicating successful logout
-  res.json({ message: 'User logged out successfully' });
+    return res.json({ success: true });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send(err.message);
+  }
 });
 
 
