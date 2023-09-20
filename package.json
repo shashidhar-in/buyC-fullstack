@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/shashidhar-in/AttryB/issues"
   },
-  "homepage": "https://github.com/shashidhar-in/AttryB#readme"
+  "homepage": "https://github.com/shashidhar-in/AttryB#readme",
+  "dependencies": {
+    "react-bootstrap-icons": "^1.10.3"
+  }
 }

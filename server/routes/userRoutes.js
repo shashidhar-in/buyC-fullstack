@@ -200,14 +200,18 @@ router.get('/:userId', (req, res) => {
 });
 
 
-  // User logout route
-  router.post('/logout', (req, res) => {
-    // Clear the token cookie
-    res.clearCookie('token');
-
-    // Send a response or redirect the user
-    res.json({ message: 'User logged out successfully' });
+// User logout route
+router.post('/logout', (req, res) => {
+  // Clear the token cookie with the same options
+  res.clearCookie('token', {
+    sameSite: 'none',
+    secure: true, // Only for HTTPS
   });
+
+  // Send a response indicating successful logout
+  res.json({ message: 'User logged out successfully' });
+});
+
 
   // Middleware to authenticate incoming requests
   function authenticate(req, res, next) {
